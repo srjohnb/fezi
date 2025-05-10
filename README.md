@@ -1,6 +1,6 @@
 # ZimFetch
 
-A lightweight fetch wrapper for browser and Node.js environments.
+ZimFetch is a lightweight and versatile fetch wrapper designed for both browser and Node.js environments, providing a simple and intuitive API for all your HTTP needs. With a TypeScript-first approach, ZimFetch ensures full type definitions for enhanced safety and autocompletion, making it an ideal choice for developers who prioritize code quality and maintainability.
 
 ## Installation
 
@@ -59,7 +59,7 @@ console.log(postResponse.data);
 const advancedResponse = await client.execute({
   path: '/posts/1',
   headers: {
-    'Authorization': 'Bearer token123',
+    Authorization: 'Bearer token123',
     'X-Custom-Header': 'custom-value',
   },
   timeout: 3000, // 3 seconds
@@ -91,7 +91,9 @@ const router = {
     create: client
       .route({ method: 'POST', path: '/posts' })
       .input(z.object({ title: z.string(), body: z.string(), userId: z.number() }))
-      .output(z.object({ id: z.number(), title: z.string(), body: z.string(), userId: z.number() })),
+      .output(
+        z.object({ id: z.number(), title: z.string(), body: z.string(), userId: z.number() })
+      ),
   },
 };
 
@@ -102,7 +104,6 @@ const newPost = await api.posts.create({ title: 'foo', body: 'bar', userId: 1 })
 ```
 
 // For more advanced examples, see the `examples/` directory in the repo.
-
 
 ## API Reference
 
