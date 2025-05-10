@@ -1,0 +1,45 @@
+# Source files
+src/
+tests/
+__tests__/
+
+# Config files
+.github/
+.vscode/
+.editorconfig
+.prettierrc
+.prettierignore
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+
+# Git files
+.git/
+.gitignore
+
+# CI/CD
+.travis.yml
+.gitlab-ci.yml
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Coverage directory
+coverage/
+
+# IDE files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific
+.DS_Store
+Thumbs.db
