@@ -184,7 +184,7 @@ async function routerExample() {
       body: 'bar',
       userId: 1,
     });
-    
+
     const { data: newPost, error: postError, status: postStatus } = response;
 
     // We can access the properties directly because TypeScript knows the type
