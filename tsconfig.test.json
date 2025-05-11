@@ -2,10 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "noEmit": true,
-    "rootDir": "."
+    "moduleResolution": "bundler",
+    "noEmit": true
   },
-  "include": ["src/**/*", "examples/**/*"],
+  "include": ["packages/*/src/**/*", "examples/**/*"],
   "exclude": ["node_modules", "dist"]
 }
