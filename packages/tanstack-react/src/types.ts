@@ -48,7 +48,7 @@ export interface TanStackEndpoint<TInput, TOutput> extends Endpoint<TInput, TOut
   /**
    * Get query options for this endpoint
    */
-  queryOptions: <TQueryKey extends QueryKey = [string]>(
+  queryOptions: <TQueryKey extends QueryKey = readonly [string, ...unknown[]]>(
     config?: QueryOptionsConfig<TOutput, Error, TQueryKey, TInput>
   ) => UseQueryOptions<TOutput, Error, TOutput, TQueryKey>;
 
