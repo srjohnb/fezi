@@ -7,7 +7,6 @@
     "docs": { "title": "📖 Documentation" },
     "style": { "title": "🎨 Code Style" },
     "test": { "title": "🧪 Tests" },
-    "build": { "title": "📦 Build System" },
-    "ci": { "title": "🤖 CI/CD" }
+    "build": { "title": "📦 Build System" }
   }
 }
