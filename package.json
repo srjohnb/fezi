@@ -1,6 +1,6 @@
 {
   "name": "fezi",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "A lightweight fetch wrapper for browser and Node.js",
   "author": "",
   "license": "MIT",
@@ -31,7 +31,7 @@
     "lint": "prettier --check \"packages/**/*.{ts,tsx}\" \"examples/**/*.{ts,tsx}\"",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rm -rf node_modules",
-    "release": "pnpm dlx bumpp --execute=\"pnpm run release:prepare && pnpm -r exec bumpp --yes --same\" --all --push --tag --commit 'chore: release v%s'",
+    "release": "pnpm dlx bumpp -r --execute=\"pnpm run release:prepare\" --all",
     "release:prepare": "pnpm run lint && pnpm run test && pnpm run build:packages && pnpm run typecheck",
     "prepare": "husky",
     "lint-staged": "lint-staged"
