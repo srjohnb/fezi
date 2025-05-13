@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Endpoint } from '@fezi/client';
-import { enhanceEndpointWithQuery, createTanStackQueryAPI } from '../src/query.js';
+import { enhanceEndpointWithQuery, createTanStackQueryAPI } from '../query.js';
 
 // Define a minimal APIClient interface for testing
 interface MockAPIClient {

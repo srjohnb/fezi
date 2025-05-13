@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Endpoint } from '@fezi/client';
-import { enhanceEndpointWithMutation, createTanStackMutationAPI } from '../src/mutation.js';
+import { enhanceEndpointWithMutation, createTanStackMutationAPI } from '../mutation.js';
 
 // Define a minimal APIClient interface for testing
 interface MockAPIClient {

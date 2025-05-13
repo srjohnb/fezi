@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Endpoint } from '@fezi/client';
-import { asTanStackEndpoint, createTanStackAPI } from '../src/adapter.js';
+import { asTanStackEndpoint, createTanStackAPI } from '../adapter.js';
 
 // Define a minimal APIClient interface for testing
 interface MockAPIClient {
