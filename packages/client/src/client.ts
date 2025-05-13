@@ -162,7 +162,7 @@ export class APIClient {
   /**
    * Build request options by merging defaults with request-specific options
    */
-  private async buildOptions(config: RequestConfig & { body?: any }): Promise<FeziOptions> {
+  private async buildOptions(config: RequestConfig & { body?: unknown }): Promise<FeziOptions> {
     const options: FeziOptions = {
       method: config.method || DEFAULT_HTTP_METHOD,
       headers: await this.mergeHeaders(config.headers),
@@ -178,9 +178,7 @@ export class APIClient {
   /**
    * Merge default headers with request-specific headers
    */
-  private async mergeHeaders(
-    requestHeaders?: Record<string, string>
-  ): Promise<Record<string, string>> {
+  private async mergeHeaders(requestHeaders?: StandardHeaders): Promise<StandardHeaders> {
     const defaultHeaders =
       typeof this.options.headers === 'function'
         ? await this.options.headers()
@@ -208,12 +206,10 @@ export class APIClient {
       const response = await fetch(url, fetchOptions);
       const parseJson = options.parseJson !== false;
 
-      let data: any;
-      if (parseJson && response.headers.get('content-type')?.includes('application/json')) {
-        data = await response.json();
-      } else {
-        data = await response.text();
-      }
+      const data =
+        parseJson && response.headers.get('content-type')?.includes('application/json')
+          ? await response.json()
+          : await response.text();
 
       return {
         data,
