@@ -55,7 +55,7 @@ const routes = {
 };
 
 // Create a TanStack Query API
-const api = createTanStackAPI(client, routes);
+const api = createTanStackAPI(routes);
 
 // Use in a Vue component
 export default defineComponent({
