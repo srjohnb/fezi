@@ -142,6 +142,9 @@ describe('createTanStackAPI', () => {
       },
     };
 
+    // Store reference to original endpoint
+    const originalEndpoint = router.users.getAll;
+
     const api = createTanStackAPI(router);
 
     // Check structure for query capabilities
@@ -156,6 +159,14 @@ describe('createTanStackAPI', () => {
     // Check keys
     expect(api.users.getAll.getKey()).toEqual(['users', 'getAll']);
     expect(api.posts.recent.get.getKey()).toEqual(['posts', 'recent', 'get']);
+
+    // Verify original endpoint hasn't been modified
+    expect(originalEndpoint).not.toHaveProperty('queryOptions');
+    expect(originalEndpoint).not.toHaveProperty('mutationOptions');
+    expect(originalEndpoint).not.toHaveProperty('getKey');
+
+    // Verify original router hasn't been modified
+    expect(router.users.getAll).toBe(originalEndpoint);
   });
 
   it('should handle nested non-Endpoint objects correctly', () => {
