@@ -88,6 +88,17 @@ describe('asTanStackEndpoint', () => {
     expect(typeof options.queryFn).toBe('function');
   });
 
+  it('should throw an error when endpoint.execute returns an error', async () => {
+    // @ts-ignore - Vue types don't match runtime objects
+    endpoint.execute.mockResolvedValue({ data: null, error: { message: 'Test error' } });
+
+    // @ts-ignore - Vue types don't match runtime objects
+    const options = enhancedEndpoint.queryOptions();
+
+    // @ts-ignore - Accessing properties directly for testing
+    await expect(options.queryFn()).rejects.toThrow();
+  });
+
   it('should return mutationOptions with correct structure', () => {
     // @ts-ignore - Vue types don't match runtime objects
     const options = enhancedEndpoint.mutationOptions();
