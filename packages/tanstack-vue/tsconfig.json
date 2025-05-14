@@ -20,8 +20,8 @@
     "baseUrl": ".",
     "noImplicitAny": true,
     "paths": {
-      "@fezi/client": ["packages/client/src"],
-      "@fezi/client/*": ["packages/client/src/*"]
+      "@fezi/client": ["../client/src"],
+      "@fezi/client/*": ["../client/src/*"]
     },
     "types": ["node", "vue/jsx-runtime"]
   },

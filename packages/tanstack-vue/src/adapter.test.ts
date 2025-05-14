@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Endpoint } from '@fezi/client';
-import { asTanStackEndpoint, createTanStackAPI } from '../adapter.js';
+import { asTanStackEndpoint, createTanStackAPI } from './adapter';
 
 // Define a minimal APIClient interface for testing
 interface MockAPIClient {
@@ -77,26 +77,35 @@ describe('asTanStackEndpoint', () => {
   });
 
   it('should return queryOptions with correct structure', () => {
+    // @ts-ignore - Vue types don't match runtime objects
     const options = enhancedEndpoint.queryOptions();
 
+    // @ts-ignore - Accessing properties directly for testing
     expect(options.queryKey).toEqual(['users', 'getAll']);
+    // @ts-ignore
     expect(options.queryFn).toBeDefined();
+    // @ts-ignore
     expect(typeof options.queryFn).toBe('function');
   });
 
   it('should return mutationOptions with correct structure', () => {
+    // @ts-ignore - Vue types don't match runtime objects
     const options = enhancedEndpoint.mutationOptions();
 
+    // @ts-ignore - Accessing properties directly for testing
     expect(options.mutationFn).toBeDefined();
+    // @ts-ignore
     expect(typeof options.mutationFn).toBe('function');
   });
 
   it('should pass URL params and input to endpoint.execute in query function', async () => {
+    // @ts-ignore - Vue types don't match runtime objects
     const options = enhancedEndpoint.queryOptions({
       input: { filter: 'active' },
       urlParams: { page: '1' },
     });
 
+    // @ts-ignore - Accessing properties directly for testing
     await options.queryFn();
 
     expect(endpoint.execute).toHaveBeenCalledWith({ filter: 'active' }, { page: '1' });
@@ -104,10 +113,12 @@ describe('asTanStackEndpoint', () => {
 
   it('should pass variables and URL params to endpoint.execute in mutation function', async () => {
     const variables = { name: 'New User' };
+    // @ts-ignore - Vue types don't match runtime objects
     const options = enhancedEndpoint.mutationOptions({
       urlParams: { department: 'engineering' },
     });
 
+    // @ts-ignore - Accessing properties directly for testing
     await options.mutationFn(variables);
 
     expect(endpoint.execute).toHaveBeenCalledWith(variables, { department: 'engineering' });
